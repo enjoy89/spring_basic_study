@@ -5,12 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity // JPA가 관리하는 앤티티라는 의미. 자바 객체와 DB와 매핑된다.
 public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // db가 알아서 자동으로 id를 생성해줌
-    private Long id;
+    private Long id; // id를 pk로 설정
     private String name;
 
     public Long getId() {

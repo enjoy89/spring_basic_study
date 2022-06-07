@@ -20,21 +20,23 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    // 회원 가입
+    // 회원 가입 기능
     @GetMapping("/members/new")
     public String createForm() {
         return "members/createMemberForm";
     }
 
+    // 회원 등록 기능
     @PostMapping("/members/new")
     public String create(MemberForm form) {
-        // createMemberForm.html에서 input으로 받아온 post 요청 처리
+        // createMemberForm.html에서 input으로 받아온 post요청 처리
         Member member = new Member();
         member.setName(form.getName());
         memberService.join(member);
-        return "redirect:/";
+        return "redirect:/";    // 홈 화면으로 URL 요청을 다시 하는 것
     }
 
+    // 회원 조회 기능
     @GetMapping("/members")
     public String list(Model model) {
         List<Member> members = memberService.findMembers();
